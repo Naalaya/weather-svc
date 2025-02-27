@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 import tx.task.forecastsvc.controller.model.WeatherRequest;
 import tx.task.forecastsvc.service.ForecastService;
-import tx.task.forecastsvc.service.model.ForecastResponse;
+import tx.task.forecastsvc.service.model.WeatherResponse;
 
 @RestController
 @AllArgsConstructor
@@ -19,7 +19,7 @@ public class WeatherController {
     @GetMapping("/weather/byCity")
     // convert to @RequestBody?
     public ResponseEntity<?> getForecastByCityName(@RequestBody WeatherRequest request) {
-        ResponseEntity<ForecastResponse> response = forecastService.getWeatherByCityName(request.getCityName());
+        ResponseEntity<WeatherResponse> response = forecastService.getWeatherByCityName(request.getCityName());
         log.info("Function called: {}, cityName: {}","getWeatherByCityName", request.getCityName());
         return response;
     }

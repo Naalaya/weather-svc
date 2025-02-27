@@ -1,7 +1,7 @@
 package tx.task.forecastsvc.service;
 
-import tx.task.forecastsvc.service.model.ForecastResponse;
+import tx.task.forecastsvc.service.model.WeatherResponse;
 
 public interface WeatherService {
-    ForecastResponse getWeatherByCityName(String cityName);
+    WeatherResponse getWeatherByCityName(String cityName);
 }

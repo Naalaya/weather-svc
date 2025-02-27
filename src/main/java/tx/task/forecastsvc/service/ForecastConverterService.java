@@ -1,9 +1,9 @@
 package tx.task.forecastsvc.service;
 
 import tx.task.forecastsvc.model.WeatherHistory;
-import tx.task.forecastsvc.service.model.ForecastResponse;
+import tx.task.forecastsvc.service.model.WeatherResponse;
 
 public interface ForecastConverterService {
-    WeatherHistory convertToRecord(ForecastResponse response);
+    WeatherHistory convertToRecord(WeatherResponse response);
 }
 

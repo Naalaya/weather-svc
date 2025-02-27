@@ -2,8 +2,8 @@ DROP TABLE IF EXISTS weather_history;
 CREATE TABLE IF NOT EXISTS weather_history (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
 
-    -- Status code
-    cod INT NOT NULL,
+#     -- Status code
+#     cod INT NOT NULL,
 
     -- Message if exists
     message VARCHAR(100),
