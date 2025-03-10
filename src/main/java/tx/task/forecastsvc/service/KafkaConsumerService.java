@@ -1,12 +1,10 @@
 package tx.task.forecastsvc.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 import tx.task.forecastsvc.model.ConsumerAudit;
 import tx.task.forecastsvc.repository.ConsumerAuditRepository;
-import tx.task.forecastsvc.service.model.WeatherResponse;
 import tx.task.forecastsvc.service.parser.MessageParser;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +17,6 @@ public class KafkaConsumerService {
 
     private final ConsumerAuditRepository consumerAuditRepository;
     private final MessageParser messageParser;
-    private final ObjectMapper objectMapper;
 
     @KafkaListener(topics = "forecastNotificationTopic", groupId = "forecastNotificationTopic")
     public void consumeMessage(String message) {

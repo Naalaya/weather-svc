@@ -18,14 +18,13 @@ public class RegexMessageParser implements MessageParser {
             log.info("Audit: {}",objectMapper.readValue(message, ConsumerAudit.class));
             ConsumerAudit node = objectMapper.readValue(message, ConsumerAudit.class);
 
-            ConsumerAudit audit = ConsumerAudit.builder()
+                   return ConsumerAudit.builder()
                     .id(node.getId())
                     .state(node.getState())
                     .event_type(node.getEvent_type())
                     .created_at(node.getCreated_at())
                     .content(objectMapper.writeValueAsString(node.getContent()))
                     .build();
-            return audit;
         } catch (Exception e) {
             log.error("Error while parsing message: {}", e.getMessage(), e);
             return null;
