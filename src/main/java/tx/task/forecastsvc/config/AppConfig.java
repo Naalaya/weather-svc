@@ -1,25 +1,28 @@
 package tx.task.forecastsvc.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.http.client.reactive.ReactorResourceFactory;
-import reactor.netty.resources.ConnectionProvider;
-import reactor.netty.resources.LoopResources;
+import tx.task.forecastsvc.service.parser.MessageParser;
+import tx.task.forecastsvc.service.parser.RegexMessageParser;
 
 @Log4j2
 @Configuration
 @ComponentScan(basePackages = {"tx.task.forecastsvc"})
+@AllArgsConstructor
 public class AppConfig {
+
+    private ObjectMapper objectMapper;
     @Bean
-    public ReactorResourceFactory resourceFactory() {
-        ReactorResourceFactory factory = new ReactorResourceFactory();
-        factory.setUseGlobalResources(false);
-        factory.setConnectionProvider(ConnectionProvider.create("http-inbound-connection", 20));
-        factory.setLoopResources(LoopResources.create("http-inbound-pool", 20, true));
-        return factory;
+    public MessageParser messageParser() {
+        return new RegexMessageParser(objectMapper);
     }
 
+    @Bean
+    public org.springframework.web.client.RestTemplate restTemplate() {
+        return new org.springframework.web.client.RestTemplate();
+    }
 }

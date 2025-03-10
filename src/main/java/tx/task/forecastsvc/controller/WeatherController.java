@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 import tx.task.forecastsvc.controller.model.WeatherRequest;
-import tx.task.forecastsvc.service.ForecastService;
+import tx.task.forecastsvc.service.WeatherService;
 import tx.task.forecastsvc.service.model.WeatherResponse;
 
 @RestController
@@ -15,17 +15,11 @@ import tx.task.forecastsvc.service.model.WeatherResponse;
 public class WeatherController {
 
 
-    private final ForecastService forecastService;
+    private final WeatherService weatherService;
     @GetMapping("/weather/byCity")
-    // convert to @RequestBody?
     public ResponseEntity<?> getForecastByCityName(@RequestBody WeatherRequest request) {
-        ResponseEntity<WeatherResponse> response = forecastService.getWeatherByCityName(request.getCityName());
+        ResponseEntity<WeatherResponse> response = weatherService.getWeatherByCityName(request.getCityName());
         log.info("Function called: {}, cityName: {}","getWeatherByCityName", request.getCityName());
         return response;
     }
-//
-//    @GetMapping("weather/byCityName")
-//    public ResponseEntity<?> getForecastByCityName(
-//            @RequestBody (required = false) WeatherRequest forecastRequest
-//    ) {}
 }

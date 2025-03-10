@@ -2,11 +2,11 @@ package tx.task.forecastsvc.service.impl;
 
 import org.springframework.stereotype.Component;
 import tx.task.forecastsvc.model.WeatherHistory;
-import tx.task.forecastsvc.service.ForecastConverterService;
+import tx.task.forecastsvc.service.WeatherConverterService;
 import tx.task.forecastsvc.service.model.WeatherResponse;
 
 @Component
-public class WeatherConverterServiceImpl implements ForecastConverterService {
+public class WeatherConverterServiceImpl implements WeatherConverterService {
 
     @Override
     public WeatherHistory convertToRecord(WeatherResponse response) {

@@ -1,7 +1,11 @@
 package tx.task.forecastsvc.service;
 
+import org.springframework.http.ResponseEntity;
 import tx.task.forecastsvc.service.model.WeatherResponse;
 
+
 public interface WeatherService {
-    WeatherResponse getWeatherByCityName(String cityName);
+    ResponseEntity<WeatherResponse> getWeatherByCityName(String cityName);
 }
+
+
